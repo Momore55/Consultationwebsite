@@ -1018,7 +1018,7 @@ position: relative;
 .concerns__text-em {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-accent);
 }
 
 .concerns__fact {
@@ -1072,9 +1072,12 @@ position: relative;
 
 .concerns__sns-block {
     display: flex;
-    flex-direction: column;
     gap: 20px;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
 }
 
 .concerns__sns-text {
@@ -1083,9 +1086,20 @@ position: relative;
     text-align: center;
 }
 
+.concerns__text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+}
+
 .concerns__explanation-photo {
+    order: 2;
+    margin-left: auto;
     width: 120px;
     height: 120px;
+    border-radius: 60px;
 }
 
 .concerns__legal-text {
@@ -1108,6 +1122,7 @@ position: relative;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow: visible;
 }
 
 .concerns__rights-title {
@@ -1120,8 +1135,12 @@ position: relative;
 }
 
 .concerns__rights-image {
-    max-width: 200px;
+    max-width: 250px;
     align-self: center;
+    position: absolute ;
+    bottom: 0 ;
+    right: -100px ;
+    margin: 0 ;
 }
 
 .concerns__warning-block {
@@ -1139,11 +1158,46 @@ position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
+    position: relative;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 70px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: none;
+    filter: drop-shadow(rgba(0, 0, 0, 0.568) 0px 4px 6px);
 }
+
+
+.concerns__warning-header::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    /* Positioned below the box */
+
+    /* Perfect centering logic */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Triangle shape */
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #FFFFFF;
+    /* Matches the white box */
+
+    pointer-events: none;
+    /* Ensures it doesn't block clicks */
+}
+
 
 .concerns__warning-icon {
     width: 48px;
     height: 48px;
+    margin-right: 10px;
 }
 
 .concerns__warning-title {
@@ -1170,15 +1224,23 @@ position: relative;
     background-color: var(--color-accent-light);
     border: 1px solid #e8b7c6;
     border-radius: 15px;
-    padding: 24px;
+    padding: 35px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: flex-start;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 35px;
+    box-sizing: border-box;
 }
 
 .concerns__example-line {
+    justify-content: flex-start!important;
+    align-items: center !important;
+    flex-direction: row;
     display: flex;
-    align-items: center;
     gap: 12px;
     justify-content: center;
 }
@@ -1197,6 +1259,18 @@ position: relative;
 .concerns__example-note {
     margin-top: 16px;
     font-size: 1.1rem;
+}
+
+
+
+
+span.crayon-underline {
+    display: inline-block;
+    background-image: url("images/decorations/crayon-underline.png");
+    background-size: 100% 3px; /* Increased from 0.5px */
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 0px; /* Added space for the image */
 }
 
 .concerns__legal-note {
@@ -1235,6 +1309,43 @@ position: relative;
     flex-direction: column;
     gap: 16px;
     text-align: left;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    list-style: none;
+}
+
+/* 3. Each individual line (centered text and icon) */
+.concerns__factors-list li {
+    display: flex ;
+    justify-content: center ;
+    align-items: center ;
+    width: 100% ;
+    padding: 20px 0;
+
+    /* Thicker 3px pink dashed line between items */
+    border-bottom: 1px dashed #D96C8A;
+}
+
+/* Remove the line from the very last item */
+.concerns__factors-list li:last-child {
+    border-bottom: none ;
+}
+
+/* 4. The icon styling */
+.concerns__factors-list li img {
+    width: 24px;
+    height: auto;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+/* 5. The text styling */
+.concerns__factors-list li span,
+.concerns__factors-list li p {
+    text-align: center !important;
+    margin: 0 !important;
 }
 
 .concerns__factors-item {
@@ -1296,7 +1407,7 @@ position: relative;
 }
 
 .attorney__header {
-    background-color: var(--color-primary);
+    background-color: var(--color-accent);
     color: var(--color-bg-light);
     padding: 30px 20px;
     text-align: center;
@@ -1312,10 +1423,10 @@ position: relative;
 
 .attorney__container {
     max-width: var(--max-width);
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    flex-direction: column;
     gap: 40px;
 }
 
@@ -1328,7 +1439,6 @@ position: relative;
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 24px;
-    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 8px;
 }
 
@@ -1358,6 +1468,11 @@ position: relative;
 .attorney__photo {
     max-width: 100%;
     border-radius: 4px;
+    width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Ensures image fills the container height */
+        display: block;
 }
 
 .attorney__philosophy {
@@ -2296,7 +2411,7 @@ details[open] .faq__question::after {
     }
 
     .concerns__rights-box {
-        flex-direction: row;
+        flex-direction: column;
         align-items: flex-start;
     }
 
@@ -2307,15 +2422,30 @@ details[open] .faq__question::after {
     /* Attorney Profile Area */
     .attorney__container {
         flex-direction: row;
-        align-items: flex-start;
+        align-items: stretch;
     }
 
     .attorney__profile {
         width: 60%;
+        flex: 1;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            /* Optional: background for text side */
     }
 
+
+        p.attorney__philosophy-text {
+            background-color: #fff9e6;
+            border-radius: 12px;
+            padding: 30px;
+            /* Box shadow: left (-8px), below (8px), blur (15px) */
+            box-shadow: -8px 8px 15px rgba(0, 0, 0, 0.1);
+        }
     .attorney__photo-wrapper {
         width: 40%;
+        flex: 0 0 40%;
+        display: flex;
     }
 
     /* Benefits Area */
